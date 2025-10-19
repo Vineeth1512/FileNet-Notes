@@ -57,7 +57,7 @@ Instead of writing code or commands, you can **use ACCE like a dashboard** to se
 
 ## 💡 Real-Time Analogy
 
-Think of **ACCE** as the **“Settings App” of your smartphone**, but for FileNet.
+Think of **ACCE** as the **“Settings App” of your smartphone**, but for FileNet..
 
 - You can **create folders and apps** (Object Stores, Classes)  
 - **Set who can access what** (Security Permissions)  
