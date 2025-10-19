@@ -9,6 +9,10 @@ The **Content Engine (CE)** is the core component of IBM FileNet that manages al
 The Content Engine is the **heart of FileNet** — it stores all the documents, keeps their details (like name, type, date), and helps users or apps to find and manage them easily.
 
 ---
+### 📝 How to Explain in Your Own Words
+*"Content Engine is like the brain or heart of FileNet. It’s the place where all files, folders, and related info are kept, organized, and protected. Whenever a user or app wants to read or save a document, it goes through the Content Engine."*
+
+---
 
 ## 🔹 Why do we use Content Engine?
 
