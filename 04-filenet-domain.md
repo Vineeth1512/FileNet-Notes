@@ -10,6 +10,10 @@ It represents the **highest level of configuration** within a FileNet environmen
 A Domain is like the **main folder** that contains everything in FileNet — all object stores, settings, and connections. It’s the **root environment** where everything in FileNet lives and operates.
 
 ---
+### 📝 How to Explain in Your Own Words
+*"A Domain is the top-level container in FileNet. Think of it as the main office building that contains all filing cabinets (Object Stores), shared resources, and security rules for the company."*
+
+---
 
 ## 🔹 Why do we use a Domain?
 
