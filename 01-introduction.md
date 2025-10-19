@@ -12,6 +12,12 @@ It acts as a central platform where documents are:
 
 ---
 
+
+### 📝 How to Explain in Your Own Words
+*"FileNet is like a digital office system where all company documents, files, and business processes are stored, organized, and managed. It helps teams find files quickly, automate workflows, and maintain security without using paper."*
+
+---
+
 ## 🔹 Why do we use FileNet?
 Modern organizations generate massive amounts of unstructured data — invoices, employee files, contracts, and more.  
 Manually managing these through file systems or databases is inefficient and risky.
