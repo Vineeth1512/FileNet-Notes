@@ -17,6 +17,11 @@ ACCE communicates directly with the **Content Platform Engine (CPE)** via REST s
 ACCE is a **web control panel** for FileNet — where admins and developers can **see, edit, and manage all the files, folders, and settings** stored in the system.
 
 ---
+### 📝 How to Explain in Your Own Words
+*"ACCE is like the settings dashboard for FileNet. It lets admins create folders, define document structures, set permissions, and check everything is working correctly — all without writing code."*
+
+---
+
 
 ## 🔹 Why do we use ACCE?
 
