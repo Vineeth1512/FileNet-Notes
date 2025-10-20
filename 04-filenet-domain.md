@@ -51,6 +51,29 @@ We use a Domain so that all the data and repositories in FileNet can **work toge
 
 ---
 
+
+
+
+# ⚙️ Factory Method to Get Domain
+| Method                                                             | Description                                                         |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `Factory.Domain.fetchInstance(Connection conn, String name, null)` | Fetches an existing Domain instance from CE.                        |
+| `Factory.Domain.createInstance(Connection conn)`                   | (Rarely used) Creates a new Domain instance programmatically in CE. |
+
+---
+# ⚙️ Common Domain Methods
+| Method                 | Return Type        | Description                              |
+| ---------------------- | ------------------ | ---------------------------------------- |
+| `get_Name()`           | String             | Returns the Domain name                  |
+| `get_ObjectStores()`   | ObjectStoreSet     | Returns all Object Stores in the Domain  |
+| `get_SecurityPolicy()` | SecurityPolicy     | Returns the domain’s security policy     |
+| `get_Users()`          | UserSet            | Returns all users defined in the domain  |
+| `get_Groups()`         | GroupSet           | Returns all groups defined in the domain |
+| `get_Properties()`     | PropertyCollection | Returns domain properties                |
+| `refresh(RefreshMode)` | void               | Refreshes the Domain object from CE      |
+
+---
+
 ## 💡 Real-Time Analogy
 
 Think of the **Domain** as the **main office building** of a company:
