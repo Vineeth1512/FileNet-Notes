@@ -1,6 +1,6 @@
 # 📚 FileNet Notes
 
-Welcome to my **FileNet ACCE Notes** repository.  
+Welcome to my **FileNet Notes** repository.  
 This repository contains detailed notes on IBM FileNet concepts, organized for **easy learning, interview preparation, and GitHub reference**.  
 
 Each topic includes:
