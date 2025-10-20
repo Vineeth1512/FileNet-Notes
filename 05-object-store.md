@@ -53,6 +53,29 @@ We use an Object Store to **store and organize all the documents of a department
 
 ---
 
+# ⚙️ Factory Method to Get ObjectStore
+| Method                                                                | Description                                              |
+| --------------------------------------------------------------------- | -------------------------------------------------------- |
+| `Factory.ObjectStore.fetchInstance(Domain domain, String name, null)` | Fetches an existing ObjectStore from a Domain            |
+| `Factory.ObjectStore.createInstance(Domain domain)`                   | Creates a new ObjectStore (rarely used programmatically) |
+
+---
+# ⚙️ Common ObjectStore Methods
+
+| Method                 | Return Type          | Description                          |
+| ---------------------- | -------------------- | ------------------------------------ |
+| `get_Name()`           | String               | Returns the ObjectStore name         |
+| `get_Description()`    | String               | Returns description                  |
+| `get_Domain()`         | Domain               | Returns the parent Domain            |
+| `get_DocClasses()`     | DocumentClassSet     | Returns all Document Classes         |
+| `get_FolderClasses()`  | FolderClassSet       | Returns all Folder Classes           |
+| `get_CustomClasses()`  | CustomObjectClassSet | Returns all Custom Object Classes    |
+| `get_Properties()`     | PropertyCollection   | Returns ObjectStore properties       |
+| `refresh(RefreshMode)` | void                 | Refreshes ObjectStore object from CE |
+| `checkIn()`            | void                 | Checks in a document                 |
+| `checkOut()`           | Document             | Checks out a document for editing    |
+
+
 ## 💡 Real-Time Analogy
 
 Think of the **Object Store** as a **filing cabinet for each department** in a company.
