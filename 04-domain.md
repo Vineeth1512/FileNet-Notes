@@ -51,6 +51,13 @@ We use a Domain so that all the data and repositories in FileNet can **work toge
 
 ---
 
+```java
+			Domain domain = Factory.Domain.fetchInstance(connection, null, null);
+```
+
+- Default Domain: When the symbolic name is null, FileNet returns the domain linked to the connection.
+- Default FetchMode: When fetch mode is null, it defaults to FetchMode.USE, which may use cached data.
+  
 
 
 
