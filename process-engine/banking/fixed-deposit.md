@@ -46,23 +46,23 @@ Banking / Financial Services
 
 ```mermaid
 flowchart TD
-    A([Start - Customer Requests FD]) --> B[Collect Customer Details & Amount]
-    B --> C{KYC Valid?}
-    C -- No --> Z1([Reject - Update KYC]) --> O([End])
-    C -- Yes --> D[Check Linked SB Account Balance]
-    D --> E{Sufficient Balance?}
-    E -- No --> Z2([Reject - Insufficient Funds]) --> O([End])
-    E -- Yes --> F[Check High-Value Deposit]
-    F --> G{Above Threshold?}
-    G -- Yes --> H[Compliance/AML Review]
-    H --> I{Approved?}
-    I -- No --> Z3([Reject - Compliance]) --> O([End])
-    I -- Yes --> J[Configure Tenure & Interest Rate]
+    A["Start: Customer Requests FD (Role: Initiator - User: Customer)"] --> B["Collect Customer Details & Amount (Role: Intake Officer - Group: Branch_Staff)"]
+    B --> C{"KYC Valid? (Role: Validator - Group: Compliance_Team)"}
+    C -- No --> Z1["Reject - Update KYC (Role: Notifier - Group: Branch_Staff)"] --> O["End (Role: System - Group: Core_Banking)"]
+    C -- Yes --> D["Check Linked SB Account Balance (Role: Verifier - Group: Core_Banking_System)"]
+    D --> E{"Sufficient Balance? (Role: Verifier - Group: Core_Banking_System)"}
+    E -- No --> Z2["Reject - Insufficient Funds (Role: Notifier - Group: Core_Banking_System)"] --> O
+    E -- Yes --> F["Check High-Value Deposit (Role: Screener - Group: Risk_Team)"]
+    F --> G{"Above Threshold? (Role: Screener - Group: Risk_Team)"}
+    G -- Yes --> H["Compliance/AML Review (Role: Analyst - Group: AML_Team)"]
+    H --> I{"Approved? (Role: Approver - Group: AML_Team)"}
+    I -- No --> Z3["Reject - Compliance (Role: Notifier - Group: AML_Team)"] --> O
+    I -- Yes --> J["Configure Tenure & Interest Rate (Role: Configurator - Group: FD_Module)"]
     G -- No --> J
-    J --> K[Debit Linked Account]
-    K --> L[Create FD Account in Core Banking]
-    L --> M[Generate FD Receipt/SMS/Email]
-    M --> O([End])
+    J --> K["Debit Linked Account (Role: Executor - Group: Core_Banking_System)"]
+    K --> L["Create FD Account in Core Banking (Role: Creator - Group: FD_Module)"]
+    L --> M["Generate FD Receipt/SMS/Email (Role: Communicator - Group: Notification_Service)"]
+    M --> O
 ```
 
 
