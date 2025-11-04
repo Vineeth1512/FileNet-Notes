@@ -8,6 +8,7 @@ It **automatically sends tasks** to the correct user and moves work step-by-step
 ➡️ It automates business work like approvals.
 
 ---
+Process Engine is a workflow engine in filenet that **runs, manages and monitors business processes** automatically according to a predefined workflow
 
 ### 📌 Purpose of Process Engine
 Why do we need it?
