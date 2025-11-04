@@ -18,17 +18,17 @@ Printing & Dispatch Unit | Prints and delivers license
 
 📌 Business Process Steps
 
-1️⃣ Apply online/offline for Learner's License (LL)
-2️⃣ Upload documents (ID, Age, Address proof)
-3️⃣ Slot booking for LL test
-4️⃣ Online/Offline Learning Test
-5️⃣ LL Issued (valid for ~6 months)
-6️⃣ Apply for Permanent Driving License
-7️⃣ Slot booking for Driving Test
-8️⃣ Road test by Inspector
-9️⃣ Result Evaluation: Pass / Fail
-🔟 If passed → Approval & DL Printing
-✅ License delivered or downloadable as smart card
+- 1️⃣ Apply online/offline for Learner's License (LL)
+- 2️⃣ Upload documents (ID, Age, Address proof)
+- 3️⃣ Slot booking for LL test
+- 4️⃣ Online/Offline Learning Test
+- 5️⃣ LL Issued (valid for ~6 months)
+- 6️⃣ Apply for Permanent Driving License
+- 7️⃣ Slot booking for Driving Test
+- 8️⃣ Road test by Inspector
+- 9️⃣ Result Evaluation: Pass / Fail
+- 🔟 If passed → Approval & DL Printing
+- ✅ License delivered or downloadable as smart card
 
 🔀 Decision Points & Routes
 Decision | Route A | Route B
@@ -60,6 +60,36 @@ flowchart TD
     I --> J[DL Printing & Dispatch]
     J --> K([End: License Issued])
 ```
+
+
+🚗 Driving License Process – Step-by-Step
+- Start
+The journey begins when an individual decides to apply for a driving license.
+- Apply for Learner's License (LL)
+The applicant submits a request to get a learner’s license.
+- Upload Documents & Pay Fees
+Required documents are uploaded and the application fee is paid.
+- LL Written Test
+The applicant takes a written test to assess basic road rules and traffic signs.
+- Fail → Must reappear for the test until passed
+- Pass → Learner’s License is issued
+- Apply for Permanent License (DL)
+After holding the learner’s license for the required period, the applicant applies for a permanent license.
+- Driving Test Scheduled
+A date is set for the practical driving test.
+- Driving Skill Test
+The applicant demonstrates driving skills in front of an examiner.
+- Fail → Must wait and reappear for the test
+- Pass → Application moves forward
+- Approval by RTO Officer
+The Regional Transport Office (RTO) officer reviews and approves the application.
+- DL Printing & Dispatch
+The driving license is printed and dispatched to the applicant.
+- End – License Issued
+The applicant receives the official driving license.
+
+Let me know if you'd like this turned into a visual diagram, a checklist for applicants, or a version for training or automation.
+
 
 🌍 Real-Time Scenario (India Example)
 
