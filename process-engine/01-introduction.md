@@ -10,6 +10,18 @@ It **automatically sends tasks** to the correct user and moves work step-by-step
 ---
 Process Engine is a workflow engine in filenet that **runs, manages and monitors business processes** automatically according to a predefined workflow
 
+#### 🛠️ What is the Process Engine in FileNet BPM?
+The Process Engine is the part of FileNet that **runs and manages workflows** — like a traffic controller for tasks.
+It takes care of:
+- 🚦 Sending tasks to the right people (task routing)
+- 🔄 Keeping track of each workflow as it moves along (workflow instance management)
+- ⏰ Starting actions when certain things happen (event triggering)
+- 👥 Assigning tasks based on roles or job titles (role-based assignments)
+- 📝 Recording what happens for tracking and audits (audit logging)
+
+Let me know if you want a diagram or example to go with it!
+
+
 ### 📌 Purpose of Process Engine
 Why do we need it?
 
