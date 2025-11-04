@@ -40,25 +40,25 @@ Documents Valid? | Continue Process | Reject Application
 ✅ Mermaid Flowchart — Driving License Issuance
 ```mermaid
 flowchart TD
-    A([Start]) --> B[Apply for Learner's License]
-    B --> C[Upload Documents & Pay Fees]
-    C --> D[LL Written Test]
-    
-    D -->|Fail| D2[Reappear for LL Test]
+    A["Start: Begin Application (Role: Applicant - User: Citizen)"] --> B["Apply for Learner's License (Role: Applicant - User: Citizen)"]
+    B --> C["Upload Documents & Pay Fees (Role: Applicant - User: Citizen)"]
+    C --> D["LL Written Test (Role: Examiner - Group: RTO_Test_Center)"]
+
+    D -->|Fail| D2["Reappear for LL Test (Role: Applicant - User: Citizen)"]
     D2 --> D
-    D -->|Pass| E[Issue Learner's License]
-    
-    E --> F[Apply for Permanent License]
-    F --> G[Driving Test Scheduled]
-    
-    G --> H[Driving Skill Test]
-    
-    H -->|Fail| H2[Re-Test After Waiting Period]
+    D -->|Pass| E["Issue Learner's License (Role: Approver - Group: RTO_Backoffice)"]
+
+    E --> F["Apply for Permanent License (Role: Applicant - User: Citizen)"]
+    F --> G["Driving Test Scheduled (Role: Scheduler - Group: RTO_Backoffice)"]
+
+    G --> H["Driving Skill Test (Role: Examiner - Group: RTO_Test_Center)"]
+
+    H -->|Fail| H2["Re-Test After Waiting Period (Role: Applicant - User: Citizen)"]
     H2 --> G
-    H -->|Pass| I[Approval by RTO Officer]
-    
-    I --> J[DL Printing & Dispatch]
-    J --> K([End: License Issued])
+    H -->|Pass| I["Approval by RTO Officer (Role: Approver - Group: RTO_Officer)"]
+
+    I --> J["DL Printing & Dispatch (Role: Dispatcher - Group: RTO_Backoffice)"]
+    J --> K["End: License Issued (Role: System - Group: DL_Management_System)"]
 ```
 
 
