@@ -65,6 +65,40 @@ flowchart TD
     M --> O([End])
 ```
 
+
+ Fixed Deposit (FD) Process Flow – Explained
+- Start – Customer Requests FD
+The process begins when a customer initiates a request to open a Fixed Deposit.
+- Collect Customer Details & Amount
+Capture essential information such as customer ID, deposit amount, and desired tenure.
+- KYC Valid?
+Check if the customer's Know Your Customer (KYC) details are up to date.
+- No → Reject the request and prompt the customer to update KYC → End
+- Yes → Proceed to the next step
+- Check Linked Savings Account Balance
+Verify if the linked savings account has enough funds to cover the FD amount.
+- Sufficient Balance?
+- No → Reject the request due to insufficient funds → End
+- Yes → Continue
+- Check High-Value Deposit
+Determine if the deposit amount exceeds a predefined threshold (e.g., ₹10 lakh or regulatory limit).
+- Above Threshold?
+- Yes → Trigger a Compliance/AML (Anti-Money Laundering) Review
+- Approved?
+- No → Reject the request due to compliance concerns → End
+- Yes → Proceed
+- No → Skip compliance review and continue
+- Configure Tenure & Interest Rate
+Based on the deposit duration and customer type (e.g., senior citizen), assign the applicable interest rate.
+- Debit Linked Account
+Deduct the FD amount from the customer’s savings account.
+- Create FD Account in Core Banking
+Set up the FD account in the core banking system with all relevant details.
+- Generate FD Receipt / SMS / Email
+Create the FD certificate and send confirmation to the customer via SMS and/or email.
+- End
+The FD creation process is complete.
+
 ---
 
 ## 🌍 Real-Time Scenario (FileNet Perspective)
