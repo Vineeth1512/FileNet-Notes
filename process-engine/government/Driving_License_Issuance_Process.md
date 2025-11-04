@@ -91,7 +91,7 @@ The applicant receives the official driving license.
 Let me know if you'd like this turned into a visual diagram, a checklist for applicants, or a version for training or automation.
 
 
-🌍 Real-Time Scenario (India Example)
+# 🌍 Real-Time Scenario (India Example)
 
 Applicants apply via Parivahan portal (RTO online services)  
 Computer-based test for LL  
