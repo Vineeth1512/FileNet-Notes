@@ -51,3 +51,53 @@ It focuses on **who does what**, **in what order**, and **how information moves*
 
 > The **process** is the *recipe*,  
 > The **workflow** is *how you actually cook it* — who adds what, and when.
+
+# ⚙️ Process vs 🔄 Workflow
+
+## ⚙️ Process
+
+A **process** is the **overall set of activities** that achieve a goal.  
+It describes **what needs to be done**.
+
+### 🧩 Example: Loan Approval Process
+1. Collect customer details  
+2. Verify credit score  
+3. Approve or reject loan  
+4. Inform customer  
+
+✅ It focuses on **what happens** and **why**.
+
+---
+
+## 🔄 Workflow
+
+A **workflow** is the **step-by-step path** that work follows within the process.  
+It describes **how** the process moves from one step to another — who does it, in what order, and how data flows.
+
+### 🧭 Example (Loan Approval Workflow)
+1. Application submitted →  
+2. System verifies documents →  
+3. Officer reviews →  
+4. Manager approves →  
+5. Notification sent  
+
+✅ It focuses on **how tasks flow** between people or systems.
+
+---
+
+## 📊 Simple Comparison Table
+
+| Feature | Process | Workflow |
+|----------|----------|-----------|
+| **Meaning** | A series of tasks to achieve a business goal | The sequence or path those tasks follow |
+| **Focus** | What needs to be done | How it is done |
+| **Scope** | Broader (end-to-end goal) | Narrower (step-by-step execution) |
+| **Example** | Hiring process | Steps for reviewing and approving a job application |
+| **Managed by** | Process management tools | Workflow automation tools |
+
+---
+
+## 💡 In Short
+
+🔹 Every **workflow** is part of a **process**,  
+🔹 but not every **process** is automated or has a defined **workflow**.
