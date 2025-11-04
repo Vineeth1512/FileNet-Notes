@@ -19,7 +19,61 @@ It takes care of:
 - 👥 Assigning tasks based on roles or job titles (role-based assignments)
 - 📝 Recording what happens for tracking and audits (audit logging)
 
-Let me know if you want a diagram or example to go with it!
+# 📘 FileNet BPM – Process Engine Responsibilities
+
+The **Process Engine (PE)** in FileNet BPM is responsible for running and managing workflows. Below are its key functions with examples from a loan approval process:
+
+---
+
+## 🧭 1. Task Routing
+
+**What it does:**  
+Sends tasks to the right person or team based on rules.
+
+**Example:**  
+After a customer submits a loan application, the PE routes the task to a **Loan Officer** for initial review. Once approved, it automatically sends the next task to the **Credit Analyst**.
+
+---
+
+## 🔄 2. Workflow Instance Management
+
+**What it does:**  
+Tracks and manages each running workflow separately.
+
+**Example:**  
+Each loan application becomes its own **workflow instance**. The PE keeps track of where each application is in the process — whether it’s under review, waiting for documents, or approved.
+
+---
+
+## ⏰ 3. Event Triggering
+
+**What it does:**  
+Starts or moves workflows when something specific happens.
+
+**Example:**  
+If a customer uploads missing documents, the PE detects this event and **automatically resumes** the paused workflow, sending it to the next step (e.g., document verification).
+
+---
+
+## 👥 4. Role-Based Assignments
+
+**What it does:**  
+Assigns tasks based on user roles, not specific people.
+
+**Example:**  
+Instead of assigning a task to “John,” the PE assigns it to the **“Loan Review Officer”** role. Any available officer in that role can pick it up — making the process flexible and scalable.
+
+---
+
+## 📝 5. Audit Logging
+
+**What it does:**  
+Records every action for tracking and compliance.
+
+**Example:**  
+When a loan is rejected, the PE logs **who rejected it, when, and why**. This helps with audits, compliance checks, and internal reviews.
+
+---
 
 
 ### 📌 Purpose of Process Engine
