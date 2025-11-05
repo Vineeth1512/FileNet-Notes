@@ -124,6 +124,46 @@ The FD creation process is complete.
 
 ---
 
+
+# 🗂️ Key Workflow Properties for FD Creation
+
+## 🧑 Customer Details
+- `customerId` – Unique identifier for the customer  
+- `customerName` – Full name of the applicant  
+- `dateOfBirth` – Used to determine senior citizen status  
+- `kycStatus` – Indicates if KYC is valid or needs update  
+- `linkedAccountNumber` – Savings account used for funding the FD  
+
+## 💰 Deposit Information
+- `depositAmount` – Amount to be placed in the FD  
+- `tenureMonths` – Duration of the FD in months  
+- `interestRate` – Applicable rate based on tenure and customer type  
+- `isSeniorCitizen` – Boolean flag to apply special interest rates  
+- `depositThresholdFlag` – Indicates if deposit exceeds compliance threshold  
+
+## 🔍 Validation & Compliance
+- `balanceAvailable` – Current balance in linked account  
+- `isHighValueDeposit` – Boolean flag for AML screening  
+- `complianceStatus` – Result of AML/compliance review  
+- `sourceOfFunds` – Optional field for audit/compliance  
+
+## 🏦 FD Account Setup
+- `fdAccountNumber` – Newly created FD account number  
+- `fdStartDate` – Date of FD creation  
+- `fdMaturityDate` – Calculated based on tenure  
+- `fdStatus` – Active, Rejected, or Pending  
+
+## 📢 Notification & Receipt
+- `receiptNumber` – FD certificate or receipt ID  
+- `notificationChannel` – SMS, Email, or Both  
+- `notificationStatus` – Sent, Failed, or Pending  
+
+## ⚙️ System Metadata
+- `workflowStatus` – Current stage (e.g., Initiated, Validated, Completed)  
+- `initiatedBy` – Role or user who started the request  
+- `rejectionReason` – If applicable (e.g., KYC invalid, insufficient funds)  
+- `timestamp` – For audit trail and tracking  
+
 ## 📝 Summary Table
 | Feature | Banking Use |
 |---------|-------------|
