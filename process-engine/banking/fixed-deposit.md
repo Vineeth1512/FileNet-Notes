@@ -128,41 +128,41 @@ The FD creation process is complete.
 # 🗂️ Key Workflow Properties for FD Creation
 
 ## 🧑 Customer Details
-- `customerId` – Unique identifier for the customer  
-- `customerName` – Full name of the applicant  
-- `dateOfBirth` – Used to determine senior citizen status  
-- `kycStatus` – Indicates if KYC is valid or needs update  
-- `linkedAccountNumber` – Savings account used for funding the FD  
+- `customerId` *(string)* – Unique identifier for the customer  
+- `customerName` *(string)* – Full name of the applicant  
+- `dateOfBirth` *(date)* – Used to determine senior citizen status  
+- `kycStatus` *(string: Valid | Invalid | Pending)* – Indicates if KYC is valid or needs update  
+- `linkedAccountNumber` *(string)* – Savings account used for funding the FD  
 
 ## 💰 Deposit Information
-- `depositAmount` – Amount to be placed in the FD  
-- `tenureMonths` – Duration of the FD in months  
-- `interestRate` – Applicable rate based on tenure and customer type  
-- `isSeniorCitizen` – Boolean flag to apply special interest rates  
-- `depositThresholdFlag` – Indicates if deposit exceeds compliance threshold  
+- `depositAmount` *(decimal)* – Amount to be placed in the FD  
+- `tenureMonths` *(integer)* – Duration of the FD in months  
+- `interestRate` *(decimal)* – Applicable rate based on tenure and customer type  
+- `isSeniorCitizen` *(boolean)* – Boolean flag to apply special interest rates  
+- `depositThresholdFlag` *(boolean)* – Indicates if deposit exceeds compliance threshold  
 
 ## 🔍 Validation & Compliance
-- `balanceAvailable` – Current balance in linked account  
-- `isHighValueDeposit` – Boolean flag for AML screening  
-- `complianceStatus` – Result of AML/compliance review  
-- `sourceOfFunds` – Optional field for audit/compliance  
+- `balanceAvailable` *(decimal)* – Current balance in linked account  
+- `isHighValueDeposit` *(boolean)* – Boolean flag for AML screening  
+- `complianceStatus` *(string: Approved | Rejected | Pending)* – Result of AML/compliance review  
+- `sourceOfFunds` *(string)* – Optional field for audit/compliance  
 
 ## 🏦 FD Account Setup
-- `fdAccountNumber` – Newly created FD account number  
-- `fdStartDate` – Date of FD creation  
-- `fdMaturityDate` – Calculated based on tenure  
-- `fdStatus` – Active, Rejected, or Pending  
+- `fdAccountNumber` *(string)* – Newly created FD account number  
+- `fdStartDate` *(date)* – Date of FD creation  
+- `fdMaturityDate` *(date)* – Calculated based on tenure  
+- `fdStatus` *(string: Active | Rejected | Pending)* – Current status of the FD  
 
 ## 📢 Notification & Receipt
-- `receiptNumber` – FD certificate or receipt ID  
-- `notificationChannel` – SMS, Email, or Both  
-- `notificationStatus` – Sent, Failed, or Pending  
+- `receiptNumber` *(string)* – FD certificate or receipt ID  
+- `notificationChannel` *(string: SMS | Email | Both)* – SMS, Email, or Both  
+- `notificationStatus` *(string: Sent | Failed | Pending)* – Status of customer notification  
 
 ## ⚙️ System Metadata
-- `workflowStatus` – Current stage (e.g., Initiated, Validated, Completed)  
-- `initiatedBy` – Role or user who started the request  
-- `rejectionReason` – If applicable (e.g., KYC invalid, insufficient funds)  
-- `timestamp` – For audit trail and tracking  
+- `workflowStatus` *(string: Initiated | Validated | Rejected | Completed)* – Current stage of the workflow  
+- `initiatedBy` *(string)* – Role or user who started the request  
+- `rejectionReason` *(string)* – If applicable (e.g., KYC invalid, insufficient funds)  
+- `timestamp` *(datetime)* – For audit trail and tracking  
 
 ## 📝 Summary Table
 | Feature | Banking Use |
