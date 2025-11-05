@@ -90,6 +90,47 @@ The applicant receives the official driving license.
 
 Let me know if you'd like this turned into a visual diagram, a checklist for applicants, or a version for training or automation.
 
+---
+## 🗂️ Key Workflow Properties for Driving License Issuance
+
+### 🧑 Applicant Details
+- `applicantId` *(string)* – Unique identifier for the applicant  
+- `applicantName` *(string)* – Full name of the applicant  
+- `dateOfBirth` *(date)* – Used to determine age eligibility  
+- `address` *(string)* – Residential address of the applicant  
+- `contactNumber` *(string)* – Mobile number for communication  
+- `email` *(string)* – Email address for notifications  
+- `identityProofType` *(string)* – Type of ID proof submitted  
+- `identityProofNumber` *(string)* – ID proof number  
+
+### 📄 Learner's License Application
+- `llApplicationDate` *(date)* – Date of learner’s license application  
+- `documentsUploaded` *(boolean)* – True if required documents are uploaded  
+- `feePaid` *(decimal)* – Application fee amount  
+- `llTestStatus` *(string: Passed | Failed | Pending)* – Status of written test  
+- `llIssueDate` *(date)* – Date learner’s license was issued  
+- `llNumber` *(string)* – Learner’s license number  
+
+### 🚗 Permanent License Application
+- `plApplicationDate` *(date)* – Date of permanent license application  
+- `drivingTestDate` *(date)* – Scheduled date for driving skill test  
+- `drivingTestStatus` *(string: Passed | Failed | Pending)* – Result of driving test  
+- `retestEligibleDate` *(date)* – Date after which applicant can reappear for test  
+- `rtoApprovalStatus` *(string: Approved | Rejected | Pending)* – Final approval status from RTO officer  
+
+### 🏷️ License Issuance
+- `dlNumber` *(string)* – Permanent driving license number  
+- `dlIssueDate` *(date)* – Date of license issuance  
+- `dlStatus` *(string: Issued | Rejected | Pending)* – Current status of the license  
+- `dispatchMode` *(string: Postal | In-person | Digital)* – How the license is delivered  
+- `dispatchStatus` *(string: Dispatched | Pending | Failed)* – Status of license dispatch  
+
+### 📢 Notification & Tracking
+- `notificationChannel` *(string: SMS | Email | Both)* – Preferred communication mode  
+- `notificationStatus` *(string: Sent | Failed | Pending)* – Status of notification  
+- `workflowStage` *(string: LL_Applied | LL_Issued | PL_Applied | DL_Issued)* – Current stage in the workflow  
+- `initiatedBy` *(string)* – Role or user who initiated the application  
+- `timestamp` *(datetime)* – Timestamp of the latest workflow update  
 
 # 🌍 Real-Time Scenario (India Example)
 
