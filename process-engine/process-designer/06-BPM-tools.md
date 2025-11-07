@@ -32,6 +32,24 @@ For a *Loan Approval Process*:
 
 All these steps are modeled inside the Process Designer.
 
+
+
+### What it does:
+Used to **create workflows** — step-by-step paths showing how work moves from one person to another.
+
+### Who uses it:
+People who **design** the process (like developers or workflow designers).
+
+### Example:
+For a *loan approval process*:
+1. Receive loan form  
+2. Check documents  
+3. Approve or reject loan  
+4. Inform customer  
+
+All these steps are created inside **Process Designer**.
+
+
 ---
 
 ## 🛠️ 2. Process Administrator
@@ -54,7 +72,22 @@ It’s mainly used by **administrators** to handle workflow configurations, runt
 If a workflow instance is stuck at “Document Verification,” the administrator can:
 - Check its status  
 - Reassign the task  
-- Restart or terminate the instance  
+- Restart or terminate the instance
+
+### What it does:
+Used to **manage and control** workflows that are already running.
+
+### Who uses it:
+**Administrators or IT staff** who take care of workflows.
+
+### Example:
+If a loan process is stuck or an employee is on leave, the Process Administrator can:
+- Reassign the task to another person  
+- Restart or stop the process  
+- Check who is doing what  
+- Fix workflow issues  
+
+---
 
 ---
 
@@ -80,6 +113,34 @@ A manager can use Process Tracker to see:
 - How long each step is taking
 
 ---
+### What it does:
+Used to **watch and track** workflows to see how work is going.
+
+### Who uses it:
+**Managers or business users** who want to see progress.
+
+### Example:
+A manager can use **Process Tracker** to see:
+- How many loan applications are waiting for approval  
+- Who is handling them  
+- How long each step is taking  
+
+---
+
+## 🧾 Summary Table
+
+| Tool | Who Uses It | What It Does |
+|------|--------------|--------------|
+| **Process Designer** | Developers | Used to *create* workflows |
+| **Process Administrator** | Admins | Used to *manage and fix* workflows |
+| **Process Tracker** | Managers | Used to *monitor and check progress* of workflows |
+
+---
+
+✅ **In short:**
+- **Process Designer** → Create workflows  
+- **Process Administrator** → Manage workflows  
+- **Process Tracker** → Monitor workflows
 
 ## 🧾 Summary Table
 
