@@ -1,4 +1,4 @@
-# 🧩 FileNet PE Terminology Explained
+# 🧩 FileNet PE Terminology 
 
 ## 🔁 Workflow Definition
 - A **workflow definition** is like a **blueprint or model** of a business process.  
