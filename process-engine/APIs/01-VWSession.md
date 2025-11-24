@@ -149,4 +149,158 @@ Your Application (Java/Spring)
 
 ---
 
+If you want, I can add:
+✔ Real-time use cases
+✔ More code samples
+✔ Interview questions
+✔ Practice assignments
 
+---
+
+## 🧩 **Code for All VWSession & VWStepElement Operations**
+
+Below are complete Java examples demonstrating how to use every major operation.
+
+---
+
+# 🟦 **VWSession — Full Operations Code**
+
+## **1️⃣ Login to PE (VWSession logon)**
+
+```java
+VWSession session = new VWSession();
+session.setBootstrapCEURI("http://localhost:9080/wsi/FNCEWS40MTOM/");
+session.logon("p8admin", "password", "FileNetP8WSI", "pe_connection_point");
+System.out.println("Logged in as: " + session.getUserName());
+```
+
+## **2️⃣ Fetch Queue**
+
+```java
+VWQueue queue = session.getQueue("Inbox");
+System.out.println("Queue Name: " + queue.getQueueName());
+```
+
+## **3️⃣ Fetch Roster & Search Workflows**
+
+```java
+VWRoster roster = session.getRoster("LoanRoster");
+VWQuery query = roster.createQuery(null, null, null, null, null, VWFetchType.FETCH_TYPE_STEP_ELEMENT);
+VWRosterElement element;
+
+while ((element = (VWRosterElement) query.next()) != null) {
+    System.out.println("Workflow ID: " + element.getWorkflowNumber());
+}
+```
+
+## **4️⃣ Fetch Work Item from Queue**
+
+```java
+VWQueueQuery q = queue.createQuery(null, null, null, null, null, VWFetchType.FETCH_TYPE_STEP_ELEMENT);
+VWStepElement step;
+
+while ((step = (VWStepElement) q.next()) != null) {
+    System.out.println("Step Name: " + step.getStepName());
+}
+```
+
+## **5️⃣ Launch a Workflow**
+
+```java
+VWProcess process = session.createProcess("LoanApprovalWorkflow");
+VWParameter param = process.createParameter("LoanAmount", VWFieldType.INTEGER, 50000);
+process.launch();
+System.out.println("Workflow started.");
+```
+
+---
+
+# 🟩 **VWStepElement — Full Operations Code**
+
+## **1️⃣ Read Step Details**
+
+```java
+System.out.println("Step Name: " + step.getStepName());
+System.out.println("Deadline: " + step.getDeadline());
+System.out.println("Received Time: " + step.getReceivedTime());
+```
+
+## **2️⃣ Lock & Unlock Step**
+
+```java
+step.doLock();
+System.out.println("Step locked.");
+
+// Unlock later
+step.unlock();
+System.out.println("Step unlocked.");
+```
+
+## **3️⃣ Read Parameters / Data Fields**
+
+```java
+String customerName = (String) step.getParameterValue("CustomerName");
+Integer loanAmount = (Integer) step.getParameterValue("LoanAmount");
+System.out.println("Customer: " + customerName + " | Amount: " + loanAmount);
+```
+
+## **4️⃣ Update Parameter Values**
+
+```java
+step.doLock();
+step.setParameterValue("ApprovalStatus", "APPROVED");
+step.doSave(true);
+```
+
+## **5️⃣ Access & Update Workflow Data Fields**
+
+```java
+VWDataField[] fields = step.getDataFields();
+for (VWDataField f : fields) {
+    System.out.println(f.getName() + " = " + f.getValue());
+}
+
+step.setDataFieldValue("DecisionBy", "Manager1");
+```
+
+## **6️⃣ Save the Step (Without Completing)**
+
+```java
+step.doSave(true);
+System.out.println("Step saved");
+```
+
+## **7️⃣ Complete (Dispatch) Step**
+
+```java
+step.doDispatch();
+System.out.println("Step completed and routed");
+```
+
+## **8️⃣ Reassign Step**
+
+```java
+step.reassignToUser("supervisor1");
+System.out.println("Reassigned to supervisor1");
+```
+
+## **9️⃣ Get Participants Assigned to Step**
+
+```java
+VWParticipant[] participants = step.getParticipants();
+for (VWParticipant p : participants) {
+    System.out.println("Participant: " + p.getParticipantName());
+}
+```
+
+## **🔟 Access Work Object & Attachments**
+
+```java
+System.out.println("Work Object Number: " + step.getWorkObjectNumber());
+VWWorkObject wo = step.getWorkObject();
+System.out.println("Fields: " + Arrays.toString(wo.getFieldNames()));
+```
+
+---
+
+## 🎯 **Everything Above Now Added to This Markdown File**
