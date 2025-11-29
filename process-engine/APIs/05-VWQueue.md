@@ -1,34 +1,34 @@
-🔹 Scenario: Loan Approval Workflow
+## 🔹 Scenario: Loan Approval Workflow
 
-Workflow Steps:
+### Workflow Steps:
 
-Customer submits loan application
+#### Customer submits loan application
 
-Fields:
+**Fields:**
 
-LoanID = "L1001"
+- LoanID = "L1001"
 
-CustomerName = "Vineeth Kumar"
+- CustomerName = "Vineeth Kumar"
 
-LoanAmount = 50000
+- LoanAmount = 50000
 
-DocumentStatus = "PENDING"
+- DocumentStatus = "PENDING"
 
-ApprovalStatus = "PENDING"
+- ApprovalStatus = "PENDING"
 
-Document Verification Step (System/Human)
+- Document Verification Step (System/Human)
 
-If all documents are verified → DocumentStatus = "VERIFIED"
+- If all documents are verified → DocumentStatus = "VERIFIED"
 
-Manager Approval Step
+- Manager Approval Step
 
-If LoanAmount < 1,00,000 → auto-approve (ApprovalStatus = "APPROVED")
+- If LoanAmount < 1,00,000 → auto-approve (ApprovalStatus = "APPROVED")
 
-Else → send to manager for manual approval
+- Else → send to manager for manual approval
 
-Completion
+- Completion
 
-Loan is either approved or rejected
+- Loan is either approved or rejected
 
 The workflow ends and record is stored in the queue
 
