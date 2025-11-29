@@ -25,229 +25,273 @@
 - **Roster** = All workflow instances (not user tasks)
 
 ---
+# 🏗️ IBM FileNet Process Engine --- VWRoster
 
-## #️⃣ 2. Important Methods in VWRoster
+## 📌 What is VWRoster?
 
-| Method | Purpose |
-|--------|---------|
-| `createQuery()` | Search workflows |
-| `fetchCount()` | Get count of results |
-| `getName()` | Returns roster name |
-| `getFieldNames()` | Returns all roster fields |
+**VWRoster** is a Process Engine API class that represents a **roster
+table** in FileNet.
 
-### ✔ Example: Load Roster
+A **roster** is a **database table** that stores **all in-progress and
+completed workflow instances** for a workflow definition.
 
-```java
-VWRoster roster = session.getRoster("DefaultRoster");
-System.out.println("Roster Loaded: " + roster.getName());
+> **Think of Roster as:**\
+> 📘 *Workflow History* + 🔄 *In-Progress Work Items*
+
+------------------------------------------------------------------------
+
+## 🎯 Why We Use VWRoster
+
+We use VWRoster to:
+
+-   ✔ Query workflow instances\
+-   ✔ Fetch workflow metadata\
+-   ✔ Apply filters and search conditions\
+-   ✔ Retrieve workflows using custom fields\
+-   ✔ Track workflow progress\
+-   ✔ Generate admin and support reports\
+-   ✔ Build dashboard analytics
+
+------------------------------------------------------------------------
+
+## 🔥 Real-Time Use Cases
+
+### 1️⃣ Loan Approval Workflow
+
+Bank wants to know:
+
+-   All loan applications between specific dates\
+-   Only "Rejected" applications\
+-   All applications created by an agent\
+-   Workflows where **CreditScore \< 600**
+
+All achieved using **VWRoster queries**.
+
+------------------------------------------------------------------------
+
+### 2️⃣ HR Onboarding Workflow
+
+HR wants:
+
+-   All onboarding workflows for the last 60 days\
+-   All workflows stuck in *Background Verification*\
+-   All completed workflows
+
+Again → **VWRoster**.
+
+------------------------------------------------------------------------
+
+### 3️⃣ BPM Analytics Dashboard
+
+Dashboard items using VWRoster:
+
+-   Total workflows created today\
+-   Pending workflows\
+-   SLA violations\
+-   Work items per user
+
+------------------------------------------------------------------------
+
+# 🧩 Important Methods in VWRoster
+
+### ⭐ 1. `fetchCount()`
+
+Returns count of workflow instances in the roster.\
+**Use case:** Show *"Total workflows"* in dashboard.
+
+------------------------------------------------------------------------
+
+### ⭐ 2. `fetchRosterDefinition()`
+
+Fetches roster metadata:
+
+-   Field names\
+-   Types\
+-   Indexes
+
+Useful when building dynamic search UIs.
+
+------------------------------------------------------------------------
+
+### ⭐ 3. `getName()`
+
+Returns *display* name of the roster.
+
+------------------------------------------------------------------------
+
+### ⭐ 4. `getAuthoredName()`
+
+Returns original name from Process Designer.
+
+------------------------------------------------------------------------
+
+### ⭐ 5. `setBufferSize(int size)`
+
+Controls number of records fetched per batch.\
+Used for **pagination** and **performance tuning**.
+
+------------------------------------------------------------------------
+
+### ⭐ 6. `createQuery()` --- MOST IMPORTANT
+
+Used to query the roster with:
+
+-   Index fields\
+-   Date ranges\
+-   Custom filters\
+-   Substitution variables\
+-   Query flags
+
+------------------------------------------------------------------------
+
+# 🎯 Important Query Flags
+
+  ---------------------------------------------------------------------------------------------------
+  Flag                                      Meaning               Real-Time Use
+  ----------------------------------------- --------------------- -----------------------------------
+  `QUERY_NO_OPTIONS (0)`                    Default query         Fetch writable work items
+
+  `QUERY_READ_UNWRITABLE (4)`               Read-only items       History reports
+
+  `QUERY_MIN_VALUES_INCLUSIVE (32)`         Include min value     `>= startDate`
+
+  `QUERY_MAX_VALUES_INCLUSIVE (64)`         Include max value     `<= endDate`
+
+  `QUERY_GET_NO_SYSTEM_FIELDS (1024)`       Skip system fields    Faster performance
+
+  `QUERY_RESOLVE_NAMES (8192)`              Resolve usernames to  Filtering by user
+                                            IDs                   
+
+  `QUERY_SORT_DESCENDING_ENABLED (16384)`   Descending sort       Latest first
+  ---------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+# 🧨 Real-Time VWRoster Query Examples
+
+## ▶️ Example 1: Fetch workflows between date ranges
+
+``` java
+VWRoster roster = session.getRoster("LoanRoster");
+
+Object[] first = { startDate };
+Object[] last  = { endDate };
+
+VWRosterQuery query = roster.createQuery(
+    "F_CreateDate",
+    first,
+    last,
+    VWRoster.QUERY_MIN_VALUES_INCLUSIVE | VWRoster.QUERY_MAX_VALUES_INCLUSIVE,
+    null,
+    null,
+    VWFetchType.FETCH_TYPE_STEP_ELEMENT
+);
 ```
 
-Sure! Here is your content exactly in Markdown file format, clean and ready to save as a .md file.
-(You can copy–paste directly into a file named: VWRoster_VWRosterQuery.md)
+------------------------------------------------------------------------
+
+## ▶️ Example 2: LoanAmount \> 500000
+
+``` java
+String filter = "LoanAmount > :AMOUNT";
+Object[] vars = { new Integer(500000) };
+
+VWRosterQuery query = roster.createQuery(
+    "LoanAmountIndex",
+    null,
+    null,
+    VWRoster.QUERY_NO_OPTIONS,
+    filter,
+    vars,
+    VWFetchType.FETCH_TYPE_STEP_ELEMENT
+);
 ```
 
+------------------------------------------------------------------------
 
----
+## ▶️ Example 3: Get workflows for a specific user
 
-# IBM FileNet Process Engine – VWRoster & VWRosterQuery (Full Notes)
+``` java
+String filter = "InitiatedBy = :USER";
+Object[] vars = { "john.doe" };
 
----
+VWRosterQuery query = roster.createQuery(
+    "InitiatedByIndex",
+    null,
+    null,
+    VWRoster.QUERY_RESOLVE_NAMES,
+    filter,
+    vars,
+    VWFetchType.FETCH_TYPE_STEP_ELEMENT
+);
+```
 
-## #️⃣ 1. VWRoster
+------------------------------------------------------------------------
 
-### ✅ What is VWRoster?
+## ▶️ Example 4: Sort workflows descending
 
-`VWRoster` is a Process Engine object that stores information about **workflow instances** (running or completed).
+``` java
+VWRosterQuery query = roster.createQuery(
+    "F_CreateDate",
+    firstValues,
+    lastValues,
+    VWRoster.QUERY_SORT_DESCENDING_ENABLED,
+    null,
+    null,
+    VWFetchType.FETCH_TYPE_WORKOBJECT
+);
+```
 
-**It acts like a table that stores all workflow instances inside the Process Engine.**
+------------------------------------------------------------------------
 
-### ✔ Why We Use VWRoster
+# 🎤 Interview Cross Questions
 
-- List all workflows that are running  
-- Search workflow instances  
-- Check workflow status  
-- Troubleshoot workflow issues  
-- Audit completed workflows  
-- Monitor workflow progress  
+### ❓ 1. What is a roster in FileNet?
 
-### ✔ Difference Between Queue & Roster
+A table that stores **completed + in-progress** workflow instances.
 
-- **Queue** = Work items assigned to users  
-- **Roster** = All workflow instances (not user tasks)
+------------------------------------------------------------------------
 
----
+### ❓ 2. Difference Between Queue and Roster
 
-## #️⃣ 2. Important Methods in VWRoster
+  -----------------------------------------------------------------------
+  Queue                             Roster
+  --------------------------------- -------------------------------------
+  Holds work items waiting for user Stores all workflow instances
+  action                            
 
-| Method | Purpose |
-|--------|---------|
-| `createQuery()` | Search workflows |
-| `fetchCount()` | Get count of results |
-| `getName()` | Returns roster name |
-| `getFieldNames()` | Returns all roster fields |
+  Belongs to workflow steps         One roster per workflow definition
 
-### ✔ Example: Load Roster
+  Used at runtime                   Used for reporting and admin queries
+  -----------------------------------------------------------------------
 
-```java
-VWRoster roster = session.getRoster("DefaultRoster");
-System.out.println("Roster Loaded: " + roster.getName());
+------------------------------------------------------------------------
 
+### ❓ 3. When to use `QUERY_READ_UNWRITABLE`?
 
----
+-   When retrieving **completed** workflows\
+-   For **audit/history** reports
 
-#️⃣ 3. VWRosterQuery
+------------------------------------------------------------------------
 
-✅ What is VWRosterQuery?
+### ❓ 4. What happens when system fields are skipped?
 
-VWRosterQuery is used to search/filter workflow instances stored inside a roster.
+-   System fields return **null**\
+-   Performance improves
 
-It is similar to SQL SELECT query for Process Engine workflows.
+------------------------------------------------------------------------
 
-✔ Why We Use VWRosterQuery
+### ❓ 5. How to filter using custom workflow fields?
 
-Search workflows by name
+Using:
 
-Search workflows by data fields
+    filter + substitutionVars
 
-Monitor workflow status
+------------------------------------------------------------------------
 
-Debug workflow errors
+### ❓ 6. When to use `QUERY_RESOLVE_NAMES`?
 
-Find stuck workflows
+When filtering workflows by **username** --- system converts it to
+**user ID**.
 
-Build admin dashboards
-
-
-
----
-
-#️⃣ 4. Important Methods in VWRosterQuery
-
-Method	Purpose
-
-hasNext()	Checks if next record exists
-next()	Returns next workflow row
-getFieldValue()	Read roster field value
-reset()	Restart query
-fetchBuffer()	Internal caching of results
-
-
-
----
-
-#️⃣ 5. Fields Available in Roster Query Results
-
-Field	Meaning
-
-F_WobNum	Workflow instance ID
-F_WorkFlowName	Workflow template name
-F_LaunchDate	Workflow start time
-F_Status	Workflow status code
-Custom fields	Example: StudentName, Amount
-
-
-
----
-
-#️⃣ 6. Java Code Examples
-
-✔ Example 1: Get All Workflows of a Specific Template
-
-VWRoster roster = session.getRoster("DefaultRoster");
-
-String[] fieldNames = {"F_WobNum", "F_WorkFlowName", "StudentName"};
-String filter = "F_WorkFlowName = 'StudentApproval'";
-
-VWRosterQuery query = roster.createQuery(fieldNames, filter, null, null, 0);
-
-while (query.hasNext()) {
-    VWWorkObject wo = (VWWorkObject) query.next();
-
-    System.out.println("WobNum: " + wo.getFieldValue("F_WobNum"));
-    System.out.println("Workflow Name: " + wo.getFieldValue("F_WorkFlowName"));
-    System.out.println("Student Name: " + wo.getFieldValue("StudentName"));
-}
-
-
----
-
-✔ Example 2: Search Workflows by Data Field
-
-String filter = "StudentID = 101";
-
-VWRosterQuery query = roster.createQuery(null, filter, null, null, 0);
-
-while (query.hasNext()) {
-    VWWorkObject wo = (VWWorkObject) query.next();
-    System.out.println("Workflow Number: " + wo.getWobNum());
-}
-
-
----
-
-✔ Example 3: Search In-Progress Workflows
-
-String filter = "F_Status = 3";  // In-progress
-
-VWRosterQuery query = roster.createQuery(null, filter, null, null, 0);
-
-while (query.hasNext()) {
-    VWWorkObject wo = (VWWorkObject) query.next();
-    System.out.println("WobNum: " + wo.getWobNum());
-}
-
-
----
-
-#️⃣ 7. Queue vs Roster (Simple Comparison)
-
-Feature	Queue (VWQueue)	Roster (VWRoster)
-
-Stores	Work items / tasks	Workflow instances
-Used by	End users	Admins / Developers
-Purpose	Complete steps	Search / audit workflows
-Scope	Current step	Entire workflow instance
-Example	ApproveRequest	StudentApproval workflow
-
-
-
----
-
-#️⃣ 8. Real-Time Business Example
-
-A company uses workflow EmployeeLeaveApproval.
-HR wants to:
-
-Find all pending leave requests
-
-Search requests by EmployeeID
-
-Track workflows launched today
-
-Identify failed or stuck workflows
-
-
-These actions are done using:
-
-➡ VWRoster + VWRosterQuery
-
-
----
-
-#️⃣ 9. Summary
-
-Concept	Description
-
-VWRoster	Stores workflow instances
-VWRosterQuery	Searches workflow instances
-VWWorkObject	One row of workflow data
-Filter String	Works like SQL WHERE condition
-
-
-
----
-
----
-
-If you want, I can convert this into a **downloadable .md file** also.  
-Just tell me **"give download file"**.
+------------------------------------------------------------------------
