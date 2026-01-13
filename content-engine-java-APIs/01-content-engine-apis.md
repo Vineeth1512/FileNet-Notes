@@ -70,6 +70,19 @@ Content Engine APIs are like **the bridge between your code and FileNet reposito
 - You can **automate repetitive tasks**, integrate with other software, and perform bulk updates efficiently.
 
 ---
+| FileNet Term      | Real Life                     |
+| ----------------- | ----------------------------- |
+| Connection        | Door to the office            |
+| Username/Password | Your ID card                  |
+| Domain            | The building                  |
+| Object Store      | A cabinet inside the building |
+| Document Class    | A form template               |
+| Document          | A filled-in form              |
+| Properties        | Fields in the form            |
+| Save              | Put the file into the cabinet |
+
+---
+
 
 ## 🌍 Real-World Scenario
 - **Automated Metadata Update**: After a system migration, update thousands of documents’ properties automatically.  
